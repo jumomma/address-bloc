@@ -48,5 +48,29 @@ require "csv"
       entries.delete(delete_entry)
     end
 
+    def binary_search(name)
+      # #1
+      lower = 0 # save the index of the leftmost item in the array in var lower
+      upper = entries.length - 1 #save index of rightmost item in var upper
+
+      # #2 # loop thru while lower index is less than or eq to upper
+      while lower <= upper
+        # #3 fine middle index by taking sum of lower + upper then dividing by 2
+        mid = (lower + upper) / 2
+        mid_name = entries[mid].name #retrieve name of entry at the middle index and store in mid_name
+
+        # #4
+        if name == mid_name #compare name to middle index / == case sensitive
+          return entries[mid]
+        elsif name < mid_name #If name is alphabetically before mid_name, then we set upper to mid - 1 because the name must be in the lower half of the array.
+          upper = mid - 1
+        elsif name >  mid_name #If name is alphabetically after mid_name, then we set lower to mid + 1 because the name must be in the upper half of the array.
+          lower = mid + 1
+        end
+      end
+
+      # #5 if we divide and conquer until no match is found, we return nil
+      return nil
+    end
 
 end
