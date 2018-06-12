@@ -70,6 +70,7 @@ RSpec.describe AddressBook do
       expect(book_size).to eq 5
     end
 
+
     # #4 access the first entry in the array of entries that AddressBook stores
     it "imports the 1st entry" do
       book.import_from_csv("entries.csv")
@@ -108,4 +109,29 @@ RSpec.describe AddressBook do
        check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
      end
    end
-end
+
+   describe "#imports from entries2.csv"
+     it "imports the correct number of entries from entries2.csv" do
+       book.import_from_csv("entries2.csv")
+       book_size = book.entries.size
+       expect(book_size).to eq 3
+     end
+
+      it "imports 1st entry from entries2.csv" do
+        book.import_from_csv("entries2.csv")
+        entry_one = book.entries[0]
+        check_entry(entry_one, "Jammie", "555-555-0101", "jammie@blocmail.com")
+      end
+
+      it "imports 2nd entry from entries2.csv" do
+        book.import_from_csv("entries2.csv")
+        entry_two = book.entries[1]
+        check_entry(entry_two, "Patti", "555-555-1111", "patti@blocmail.com")
+        end
+
+      it "imports 3rd entry from entries2.csv" do
+        book.import_from_csv("entries2.csv")
+        entry_three = book.entries[2]
+        check_entry(entry_three, "Willis", "555-555-2222", "willis@blocmail.com")
+      end
+    end
