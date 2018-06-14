@@ -48,6 +48,11 @@ require "csv"
       entries.delete(delete_entry)
     end
 
+    def demolish
+      @entries = []
+    end
+
+
     def binary_search(name)
       # #1
       lower = 0 # save the index of the leftmost item in the array in var lower
